@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cryptogra/static/css/main.ad5fabba.css",
+    "main.js": "/cryptogra/static/js/main.eb09eb8c.js",
+    "static/js/453.fe716f88.chunk.js": "/cryptogra/static/js/453.fe716f88.chunk.js",
+    "index.html": "/cryptogra/index.html",
+    "main.ad5fabba.css.map": "/cryptogra/static/css/main.ad5fabba.css.map",
+    "main.eb09eb8c.js.map": "/cryptogra/static/js/main.eb09eb8c.js.map",
+    "453.fe716f88.chunk.js.map": "/cryptogra/static/js/453.fe716f88.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad5fabba.css",
+    "static/js/main.eb09eb8c.js"
+  ]
+}
