@@ -1,5 +1,5 @@
 {
-  "homepage":"https://github.com/harshraj2hr/cryptogra",
+  "homepage": "https://github.com/harshraj2hr/cryptogra",
   "name": "crypto-grad",
   "version": "0.1.0",
   "private": true,
@@ -43,7 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },"devDependencies": {
+  },
+  "devDependencies": {
     "gh-pages": "^6.1.1"
   }
 }
