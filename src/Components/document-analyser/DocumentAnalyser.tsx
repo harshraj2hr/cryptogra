@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import backButtonImg from '../../Icons/arrow_back_ios_new.png';
 import '../../App.css';
 import arrowImg from '../../Icons/east.png';
@@ -13,22 +14,11 @@ import arrowDownImg from '../../Icons/keyboard_arrow_down.png';
 import folderImg from '../../Icons/folder.png';
 import contentCopyImg from '../../Icons/content_copy.png';
 import iosShareImg from '../../Icons/ios_share.png';
+import FileUploadPopup from './FileUploadPopup';
 
 function DocumentAnalyser() {
-  const { generateTradeData } = mockData; 
-    const data = [
-        {
-          document: "Trade Log 1",
-          trade: "Reliance Industries",
-          date: "Jan 05, 2024",
-          exchange: "NSE",
-          "type of trade": "Long Position",
-          "trade size": 100000,
-          "type of instrument": "Indian Stock",
-          "profit/loss %": -1.3,
-        },
-      ];
-      const tradeData = generateTradeData();
+  
+      const tradeData: any[]=[];
 
 
       const [columns, setColumns] = useState([
@@ -42,6 +32,33 @@ function DocumentAnalyser() {
         "Profit/Loss %"
       ]); 
     
+      const [showUploadPopup, setShowUploadPopup] = useState<boolean>(false);
+
+      const handleUpload = (files: File[]) => {
+        console.log('Files to be uploaded:', files);
+        // Here, you can call your API to upload the files
+        uploadFiles(files);
+      };
+    
+      const uploadFiles = async (files: File[]) => {
+        const formData = new FormData();
+        files.forEach((file) => {
+          formData.append('documents', file);
+        });
+    
+        try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          const result = await response.json();
+          console.log('Upload success:', result);
+        } catch (error) {
+          console.error('Error uploading files:', error);
+        }
+      };
+
+      
       const addColumn = () => {
         const newColumn = `New Column ${columns.length + 1}`;
         setColumns([...columns, newColumn]);
@@ -102,9 +119,15 @@ function DocumentAnalyser() {
                   <span className="toggle-slider"></span>
                 </label>
               </div>
-              <button className="add-columns-wrapper">
-                <img src={PlusButton}></img> Add Documents
-              </button>
+              <button className="add-columns-wrapper" onClick={() => setShowUploadPopup(true)}>
+        <img src={PlusButton} alt="plus" /> Add Documents
+      </button>
+      {showUploadPopup && (
+        <FileUploadPopup
+          onClose={() => setShowUploadPopup(false)}
+          onUpload={handleUpload}
+        />
+      )}
               <button onClick={addColumn} className="add-columns-wrapper">
                 <img src={PlusButton}></img> Add Columns
               </button>
@@ -182,20 +205,8 @@ function DocumentAnalyser() {
 
             <div className="summary-card-info">
               <div className="summary-output-wrapper ">
-                <span className='font-wight-400'>
-                  75% long positions Avg trade side= 27.3 lakh Total profit in
-                  15 days 10.4% Bullish Strategy: The high percentage of long
-                  positions reflects a bullish view on the market, focusing on
-                  buying opportunities. Local Market Focus: With nearly 70% of
-                  trades focused on Indian stocks, the trader has a clear
-                  emphasis on domestic markets, likely leveraging his/her
-                  familiarity with local trends and conditions. Efficient
-                  Execution: The preference for market orders indicates the
-                  trader has prioritized speed over waiting for ideal price
-                  conditions, potentially benefiting from quick market
-                  movements. Strong Performance: Achieving a 10.4% profit in
-                  just 15 days highlights the effectiveness of the trading
-                  strategy and the timely market decisions made.
+                <span className='font-weight-400'>
+                  {/* //summary from api. */}
                 </span>
               </div>
               <div className='copy-share-buttons'>
@@ -206,6 +217,7 @@ function DocumentAnalyser() {
           </div>
         </div>
       );
+
 }
 
 export default DocumentAnalyser
