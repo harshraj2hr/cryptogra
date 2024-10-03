@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router  basename="/cryptogra">
         <Routes>
           <Route path="/cryptograd/document-analyser" element={<MainComponent />} />
           {/* for the time being*/}
