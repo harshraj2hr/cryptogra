@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg'; 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import MainComponent from './main-component/MainComponent';
+import './App.css';
 
 function App() {
   return (
@@ -10,6 +9,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/cryptograd/document-analyser" element={<MainComponent />} />
+          {/* for the time being*/}
+          <Route path="/" element={<MainComponent />} /> 
         </Routes>
       </Router>
     </div>
