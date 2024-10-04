@@ -28,7 +28,8 @@ input[type="search"] {
     font-size: 1rem;
     background-color: #F9FAF8;
     border: none;
-    backdrop-filter: blur(10px);;
+    backdrop-filter: blur(10px);
+    padding: 8px 12px 8px 12px
 }
 
 input[type="search" i] {
@@ -74,7 +75,6 @@ input[type="search" i] {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 8px 12px 8px 12px;
   border: 0.4px solid #24242466;
   border-radius: 8px;  
   background-color: #F9FAF8;
@@ -153,7 +153,7 @@ input[type="search" i] {
     display: flex;
     border: 0.4px solid #24242466;
     border-radius: 8px;
-    gap: 10px;
+    gap: 12px;
     cursor: pointer;
     padding: 8px;
   }
@@ -182,14 +182,6 @@ input[type="search" i] {
   }
   
   .table-container {
-    /* display: flex;
-    border-bottom: 1px solid #8585854D;
-    align-items: center;
-    overflow: hidden;
-    overflow-x: auto;
-    overflow-y: auto;
-    height: 400px;
-   */
     display: flex;
     border-bottom: 1px solid #8585854D(133, 133, 133, 0.3);
     overflow: hidden;
@@ -393,5 +385,44 @@ input[type="search" i] {
   
   .toggle-input:checked + .toggle-slider:before {
     transform: translateX(20px);
+  }
+  
+  .popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 291px;
+    border-radius: 12px;
+    gap: 10px;
+    height: 569px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px 0px #00000040;
+    z-index: 10;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .dropzone {
+    border: 1px solid #24242440;
+    padding: 52px;
+    text-align: center;
+    gap:16px;
+    cursor: pointer;
+  }
+  
+  .file-list {
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    cursor: pointer;
   }
   
