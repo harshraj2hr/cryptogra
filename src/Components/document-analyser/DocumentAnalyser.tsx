@@ -17,7 +17,7 @@ import iosShareImg from '../../Icons/ios_share.png';
 import FileUploadPopup from './FileUploadPopup';
 
 function DocumentAnalyser() {
-  
+
       const tradeData: any[]=[];
 
 
@@ -39,13 +39,13 @@ function DocumentAnalyser() {
         // Here, you can call your API to upload the files
         uploadFiles(files);
       };
-    
+
       const uploadFiles = async (files: File[]) => {
         const formData = new FormData();
         files.forEach((file) => {
           formData.append('documents', file);
         });
-    
+
         try {
           const response = await fetch('/api/upload', {
             method: 'POST',
@@ -58,7 +58,7 @@ function DocumentAnalyser() {
         }
       };
 
-      
+
       const addColumn = () => {
         const newColumn = `New Column ${columns.length + 1}`;
         setColumns([...columns, newColumn]);

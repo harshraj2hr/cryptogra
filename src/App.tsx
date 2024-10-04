@@ -6,10 +6,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Router basename="/cryptogra">
+      <Router  basename="/cryptogra">
         <Routes>
           <Route path="/cryptograd/document-analyser" element={<MainComponent />} />
-          <Route path="/" element={<MainComponent />} /> 
+          {/* for the time being*/}
+          <Route path="/" element={<MainComponent />} />
         </Routes>
       </Router>
     </div>
